@@ -4,7 +4,8 @@ PROGS = \
 	c/c-libc-static-null c/c-libc-dynamic-null \
 	c/c++-static-null c/c++-dynamic-null \
 	haskell/null-single haskell/null-threaded \
-	ocaml/null-byte ocaml/null-opt
+	ocaml/null-byte ocaml/null-opt \
+	java/null-gcj
 
 SCRIPTS = \
 	dash/null.dash bash/null.bash \
@@ -74,6 +75,10 @@ ocaml/null-opt: ocaml/null.ml
 	ocamlopt -o $@ $<
 	strip $@
 
+java/null-gcj: java/Null.java
+	gcj-4.6 --main=Null -o $@ $<
+	strip $@
+
 log: $(PROGS) $(SCRIPTS) Makefile
 	rm -f log; \
 	for prog in $(PROGS) $(SCRIPTS); do \
@@ -86,7 +91,8 @@ log: $(PROGS) $(SCRIPTS) Makefile
 .PHONY: log
 
 clean:
-	cd asm && rm *.o
+	cd asm && rm -f *.o
 	cd haskell && rm -f *.hi *.o
 	cd ocaml && rm -f *.cmo *.cmi *.cmx *.o
+	cd java && rm -f *.class
 	rm -f $(PROGS)
