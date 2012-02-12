@@ -10,6 +10,7 @@
 
 /log
 
+/asm/null
 /c/c++-dynamic-null
 /c/c++-static-null
 /c/c-diet-dynamic-null

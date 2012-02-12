@@ -1,4 +1,5 @@
 PROGS = \
+	asm/null \
 	c/c-diet-static-null c/c-diet-dynamic-null \
 	c/c-libc-static-null c/c-libc-dynamic-null \
 	c/c++-static-null c/c++-dynamic-null \
@@ -27,6 +28,11 @@ REPS = 100
 all: $(PROGS)
 
 $(PROGS): Makefile
+
+asm/null: asm/null.s
+	as -o asm/null.o $<
+	ld -o $@ asm/null.o
+	strip $@
 
 c-diet-static-%: %.c
 	diet gcc -static -O2 -Wall -o $@ $<
@@ -80,6 +86,7 @@ log: $(PROGS) $(SCRIPTS) Makefile
 .PHONY: log
 
 clean:
+	cd asm && rm *.o
 	cd haskell && rm -f *.hi *.o
 	cd ocaml && rm -f *.cmo *.cmi *.cmx *.o
 	rm -f $(PROGS)
