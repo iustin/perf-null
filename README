@@ -10,7 +10,7 @@ work. They should all be available in (Debian) Sid:
 - python: python2.6 python2.7 python3.2 pypy
 - etc.
 
-Main target is "make log", and it is recommended to run in in
-single-user mode, and with an idle system. For consistency, also force
-the make run on a single CPU (this might make things a tad slower, but
-the results should be more stable).
+Main target is "make log", and it is recommended to run it via
+./run.sh, which is a simple wrapper that should make runs more
+consistent.
+
