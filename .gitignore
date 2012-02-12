@@ -14,8 +14,7 @@
 /asm/null
 /c/c++-dynamic-null
 /c/c++-static-null
-/c/c-diet-dynamic-null
-/c/c-diet-static-null
+/c/c-diet-null
 /c/c-libc-dynamic-null
 /c/c-libc-static-null
 /haskell/null-single
