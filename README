@@ -14,3 +14,4 @@ Main target is "make log", and it is recommended to run it via
 ./run.sh, which is a simple wrapper that should make runs more
 consistent.
 
+Note: all the extremelly trivial code here is GPL v2 or later. See COPYING.
