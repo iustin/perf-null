@@ -18,11 +18,13 @@ SCRIPTS = \
 	python/null.py32 python/null.py32-s \
 	python/null.pypy
 
-METRICS = \
-	cycles,instructions,branches,branch-misses \
-	dtlb-loads,dtlb-load-misses,itlb-loads,itlb-load-misses \
-	cycles,instructions,cache-references,cache-misses \
-	cycles,instructions,stalled-cycles-frontend,stalled-cycles-backend
+#METRICS = \
+#	cycles,instructions,branches,branch-misses \
+#	dtlb-loads,dtlb-load-misses,itlb-loads,itlb-load-misses \
+#	cycles,instructions,cache-references,cache-misses \
+#	cycles,instructions,stalled-cycles-frontend,stalled-cycles-backend
+
+METRICS = cycles,instructions,branches,branch-misses,cpu-clock,task-clock,major-faults,minor-faults,cs
 
 JAVA_VMS = server zero cacao jamvm
 # see below for how this is called
