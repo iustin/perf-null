@@ -22,6 +22,8 @@ METRICS = \
 	cycles,instructions,cache-references,cache-misses \
 	cycles,instructions,stalled-cycles-frontend,stalled-cycles-backend
 
+REPS = 100
+
 all: $(PROGS)
 
 $(PROGS): Makefile
@@ -71,7 +73,7 @@ log: $(PROGS) $(SCRIPTS) Makefile
 	for prog in $(PROGS) $(SCRIPTS); do \
 	  echo $$prog; \
 	  for metric in $(METRICS); do \
-	    LC_ALL=C perf stat -e "$$metric" -r100 -o log --append ./$$prog; \
+	    LC_ALL=C perf stat -e "$$metric" -r $(REPS) -o log --append ./$$prog; \
 	  done; \
 	done
 
