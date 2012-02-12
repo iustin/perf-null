@@ -1,0 +1,3 @@
+#!/usr/bin/luajit-2.0.0-beta9
+
+os.exit(0)

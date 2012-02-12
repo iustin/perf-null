@@ -1,0 +1,5 @@
+#!/usr/bin/php -n
+
+<?php
+exit(0);
+?>
