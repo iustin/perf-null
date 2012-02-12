@@ -11,7 +11,8 @@ SCRIPTS = \
 	dash/null.dash bash/null.bash \
 	mksh/null.mksh mksh/null.mksh-static \
 	lua/null.lua51 lua/null.lua52 lua/null.luajit \
-	perl/null.pl ruby/null.rb \
+	perl/null.pl \
+	ruby/null.rb18 ruby/null.rb19 \
 	php/null.php php/null.php-n \
 	tcl/null.tcl84 tcl/null.tcl85 tcl/null.tcl86 \
 	python/null.py26 python/null.py26-s \
