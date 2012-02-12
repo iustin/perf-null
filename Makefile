@@ -64,9 +64,9 @@ ocaml/null-opt: ocaml/null.ml
 	strip $@
 
 log: $(PROGS) $(SCRIPTS) Makefile
-	set -x; \
 	rm -f log; \
 	for prog in $(PROGS) $(SCRIPTS); do \
+	  echo $$prog; \
 	  for metric in $(METRICS); do \
 	    LC_ALL=C perf stat -e "$$metric" -r100 -o log --append ./$$prog; \
 	  done; \
