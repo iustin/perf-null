@@ -24,9 +24,13 @@ METRICS = \
 	cycles,instructions,cache-references,cache-misses \
 	cycles,instructions,stalled-cycles-frontend,stalled-cycles-backend
 
+JAVA_VMS = server zero cacao jamvm
+# see below for how this is called
+JAVA_INVOCS = $(JAVA_VMS:%="java -cp java -% Null")
+
 REPS = 100
 
-all: $(PROGS)
+all: $(PROGS) java/Null.class
 
 $(PROGS): Makefile
 
@@ -79,12 +83,15 @@ java/null-gcj: java/Null.java
 	gcj-4.6 --main=Null -o $@ $<
 	strip $@
 
-log: $(PROGS) $(SCRIPTS) Makefile
+java/Null.class: java/Null.java Makefile
+	javac $<
+
+log: $(PROGS) $(SCRIPTS) java/Null.class Makefile
 	rm -f log; \
-	for prog in $(PROGS) $(SCRIPTS); do \
+	for prog in $(PROGS:%=./%) $(SCRIPTS:%=./%) $(JAVA_INVOCS); do \
 	  echo $$prog; \
 	  for metric in $(METRICS); do \
-	    LC_ALL=C perf stat -e "$$metric" -r $(REPS) -o log --append ./$$prog; \
+	    LC_ALL=C perf stat -e "$$metric" -r $(REPS) -o log --append $$prog; \
 	  done; \
 	done
 

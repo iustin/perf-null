@@ -6,6 +6,7 @@
 *.[oa]
 *.cm[ixo]
 *.hi
+*.class
 *~
 
 /log
