@@ -1,0 +1,5 @@
+#!/usr/bin/python2.6 -S
+
+import sys
+
+sys.exit(0)

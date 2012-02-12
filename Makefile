@@ -11,7 +11,10 @@ SCRIPTS = \
 	perl/null.pl ruby/null.rb \
 	php/null.php php/null.php-n \
 	tcl/null.tcl84 tcl/null.tcl85 \
-	python/null.py-s python/null.py python/null.pypy
+	python/null.py26 python/null.py26-s \
+	python/null.py27 python/null.py27-s \
+	python/null.py32 python/null.py32-s \
+	python/null.pypy
 
 METRICS = \
 	cycles,instructions,branches,branch-misses \
