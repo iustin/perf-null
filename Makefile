@@ -10,7 +10,7 @@ SCRIPTS = \
 	lua/null.lua51 lua/null.lua52 lua/null.luajit \
 	perl/null.pl ruby/null.rb \
 	php/null.php php/null.php-n \
-	tcl/null.tcl \
+	tcl/null.tcl84 tcl/null.tcl85 \
 	python/null.py-s python/null.py python/null.pypy
 
 METRICS = \
