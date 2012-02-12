@@ -12,6 +12,7 @@ SCRIPTS = \
 	mksh/null.mksh mksh/null.mksh-static \
 	lua/null.lua51 lua/null.lua52 lua/null.luajit \
 	perl/null.pl \
+	awk/null.mawk awk/null.gawk \
 	ruby/null.rb18 ruby/null.rb19 \
 	php/null.php php/null.php-n \
 	tcl/null.tcl84 tcl/null.tcl85 tcl/null.tcl86 \
