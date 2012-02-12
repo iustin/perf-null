@@ -1,6 +1,6 @@
 PROGS = \
 	asm/null \
-	c/c-diet-static-null c/c-diet-dynamic-null \
+	c/c-diet-null \
 	c/c-libc-static-null c/c-libc-dynamic-null \
 	c/c++-static-null c/c++-dynamic-null \
 	haskell/null-single haskell/null-threaded \
@@ -9,6 +9,7 @@ PROGS = \
 
 SCRIPTS = \
 	dash/null.dash bash/null.bash \
+	mksh/null.mksh mksh/null.mksh-static \
 	lua/null.lua51 lua/null.lua52 lua/null.luajit \
 	perl/null.pl ruby/null.rb \
 	php/null.php php/null.php-n \
@@ -41,11 +42,7 @@ asm/null: asm/null.s
 	ld -o $@ asm/null.o
 	strip $@
 
-c-diet-static-%: %.c
-	diet gcc -static -O2 -Wall -o $@ $<
-	strip $@
-
-c-diet-dynamic-%: %.c
+c-diet-%: %.c
 	diet gcc -O2 -Wall -o $@ $<
 	strip $@
 
