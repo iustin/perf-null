@@ -19,7 +19,7 @@ SCRIPTS = \
 	python/null.py26 python/null.py26-s \
 	python/null.py27 python/null.py27-s python/null.py27-o \
 	python/null.py32 python/null.py32-s python/null.py32-o \
-	python/null.pypy
+	python/null.pypy python/null.pypy-s
 
 #METRICS = \
 #	cycles,instructions,branches,branch-misses \
