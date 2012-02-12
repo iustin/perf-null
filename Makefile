@@ -17,8 +17,8 @@ SCRIPTS = \
 	php/null.php php/null.php-n \
 	tcl/null.tcl84 tcl/null.tcl85 tcl/null.tcl86 \
 	python/null.py26 python/null.py26-s \
-	python/null.py27 python/null.py27-s \
-	python/null.py32 python/null.py32-s \
+	python/null.py27 python/null.py27-s python/null.py27-o \
+	python/null.py32 python/null.py32-s python/null.py32-o \
 	python/null.pypy
 
 #METRICS = \

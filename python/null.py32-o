@@ -1,0 +1,5 @@
+#!/usr/bin/python3.2 -O
+
+import sys
+
+sys.exit(0)
