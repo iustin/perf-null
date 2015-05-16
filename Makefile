@@ -37,6 +37,13 @@ PYTHON_INVOCS = $(foreach py,$(PYTHON_VERSIONS), \
 
 EXTRA_RUN = /bin/true
 
+ALL_TARGETS = \
+  $(PROGS:%=./%) \
+  $(SCRIPTS:%=./%) \
+  $(JAVA_INVOCS) \
+  $(PYTHON_INVOCS) \
+  $(EXTRA_RUN)
+
 REPS ?= 100
 
 PERF ?= perf
@@ -94,13 +101,18 @@ java/Null.class: java/Null.java Makefile
 	javac $<
 
 log: $(PROGS) $(SCRIPTS) java/Null.class Makefile
-	rm -f log; \
-	for prog in $(PROGS:%=./%) $(SCRIPTS:%=./%) \
-	  $(EXTRA_RUN) $(JAVA_INVOCS) $(PYTHON_INVOCS); do \
+	@rm -f log; \
+	for prog in $(ALL_TARGETS); do \
 	  echo $$prog; \
 	  for metric in $(METRICS); do \
 	    LC_ALL=C $(PERF) stat -e "$$metric" -r $(REPS) -o log --append $$prog; \
 	  done; \
+	done
+
+test: $(PROGS) $(SCRIPTS) java/Null.class Makefile
+	@for prog in $(ALL_TARGETS); do \
+	  echo $$prog; \
+	  $$prog; \
 	done
 
 clean:
@@ -113,4 +125,4 @@ clean:
 report:
 	LC_ALL=en_US.UTF-8 awk -f dump.awk log
 
-.PHONY: log clean report
+.PHONY: log clean report test
