@@ -37,7 +37,7 @@ PYTHON_INVOCS = $(foreach py,$(PYTHON_VERSIONS), \
 
 EXTRA_RUN = /bin/true
 
-REPS = 100
+REPS ?= 100
 
 PERF ?= perf
 

@@ -9,5 +9,5 @@ make
 # preseed filesystem cache
 make log REPS=2
 # now do the real run
-$CHRT $TASKSET make log REPS=500
+$CHRT $TASKSET make log
 make report
