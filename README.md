@@ -16,5 +16,5 @@ Main target is "make log", and it is recommended to run it via
 ./run.sh, which is a simple wrapper that should make runs more
 consistent.
 
-Note: all the extremelly trivial code here is under the Apache
-License, Version 2.0. See LICENSE.
+Note: all the extremely trivial code here is under the Apache License,
+Version 2.0. See LICENSE.
