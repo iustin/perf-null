@@ -37,6 +37,8 @@ EXTRA_RUN = /bin/true
 
 REPS = 100
 
+PERF ?= perf
+
 all: $(PROGS) java/Null.class
 
 $(PROGS): Makefile
@@ -94,7 +96,7 @@ log: $(PROGS) $(SCRIPTS) java/Null.class Makefile
 	for prog in $(PROGS:%=./%) $(SCRIPTS:%=./%) $(EXTRA_RUN) $(JAVA_INVOCS); do \
 	  echo $$prog; \
 	  for metric in $(METRICS); do \
-	    LC_ALL=C perf stat -e "$$metric" -r $(REPS) -o log --append $$prog; \
+	    LC_ALL=C $(PERF) stat -e "$$metric" -r $(REPS) -o log --append $$prog; \
 	  done; \
 	done
 
