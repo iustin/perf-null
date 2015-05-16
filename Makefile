@@ -5,7 +5,8 @@ PROGS = \
 	c/c++-static-null c/c++-dynamic-null \
 	haskell/null-single haskell/null-threaded \
 	ocaml/null-byte ocaml/null-opt \
-	java/null-gcj
+	java/null-gcj-4.6 java/null-gcj-4.8 \
+	java/null-gcj-4.9 java/null-gcj-5
 
 SCRIPTS = \
 	dash/null.dash bash/null.bash \
@@ -84,8 +85,8 @@ ocaml/null-opt: ocaml/null.ml
 	ocamlopt -o $@ $<
 	strip $@
 
-java/null-gcj: java/Null.java
-	gcj-4.6 --main=Null -o $@ $<
+java/null-gcj-%: java/Null.java
+	gcj-$* --main=Null -o $@ $<
 	strip $@
 
 java/Null.class: java/Null.java Makefile
