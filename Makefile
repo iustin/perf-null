@@ -27,24 +27,24 @@ METRICS = cycles,instructions,branches,branch-misses,cpu-clock,task-clock,major-
 
 JAVA_VMS = server zero cacao jamvm
 # see below for how this is called
-JAVA_INVOCS = $(JAVA_VMS:%="java -cp java -% Null")
+JAVA_TARGETS = $(JAVA_VMS:%="java -cp java -% Null")
 
 PYTHON_VERSIONS ?= python2.7 python3.4 pypy
 PYTHON_VARIANTS = "" -O -S
-PYTHON_INVOCS = $(foreach py,$(PYTHON_VERSIONS), \
+PYTHON_TARGETS = $(foreach py,$(PYTHON_VERSIONS), \
 	$(foreach opt,$(PYTHON_VARIANTS), "$(py) $(opt) python/null.py"))
 
 LUA_VERSIONS ?= lua5.1 lua5.2 luajit
-LUA_INVOCS = $(LUA_VERSIONS:%="% lua/null.lua")
+LUA_TARGETS = $(LUA_VERSIONS:%="% lua/null.lua")
 
 EXTRA_RUN = /bin/true
 
 ALL_TARGETS = \
   $(PROGS:%=./%) \
   $(SCRIPTS:%=./%) \
-  $(JAVA_INVOCS) \
-  $(PYTHON_INVOCS) \
-  $(LUA_INVOCS) \
+  $(JAVA_TARGETS) \
+  $(PYTHON_TARGETS) \
+  $(LUA_TARGETS) \
   $(EXTRA_RUN)
 
 REPS ?= 100
