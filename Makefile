@@ -103,11 +103,14 @@ log: $(PROGS) $(SCRIPTS) java/Null.class Makefile
 	  done; \
 	done
 
-.PHONY: log
-
 clean:
 	cd asm && rm -f *.o
 	cd haskell && rm -f *.hi *.o
 	cd ocaml && rm -f *.cmo *.cmi *.cmx *.o
 	cd java && rm -f *.class
 	rm -f $(PROGS)
+
+report:
+	LC_ALL=en_US.UTF-8 awk -f dump.awk log
+
+.PHONY: log clean report

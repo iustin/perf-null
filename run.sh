@@ -10,4 +10,4 @@ make
 make log REPS=2
 # now do the real run
 $CHRT $TASKSET make log REPS=500
-LC_ALL=en_US.UTF-8 awk -f dump.awk log
+make report
