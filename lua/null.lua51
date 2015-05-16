@@ -1,3 +1,0 @@
-#!/usr/bin/lua5.1
-
-os.exit(0)

@@ -11,7 +11,6 @@ PROGS = \
 SCRIPTS = \
 	dash/null.dash bash/null.bash \
 	mksh/null.mksh mksh/null.mksh-static \
-	lua/null.lua51 lua/null.lua52 lua/null.luajit \
 	perl/null.pl \
 	awk/null.mawk awk/null.gawk \
 	ruby/null.rb18 ruby/null.rb19 \
@@ -35,6 +34,9 @@ PYTHON_VARIANTS = "" -O -S
 PYTHON_INVOCS = $(foreach py,$(PYTHON_VERSIONS), \
 	$(foreach opt,$(PYTHON_VARIANTS), "$(py) $(opt) python/null.py"))
 
+LUA_VERSIONS ?= lua5.1 lua5.2 luajit
+LUA_INVOCS = $(LUA_VERSIONS:%="% lua/null.lua")
+
 EXTRA_RUN = /bin/true
 
 ALL_TARGETS = \
@@ -42,6 +44,7 @@ ALL_TARGETS = \
   $(SCRIPTS:%=./%) \
   $(JAVA_INVOCS) \
   $(PYTHON_INVOCS) \
+  $(LUA_INVOCS) \
   $(EXTRA_RUN)
 
 REPS ?= 100
