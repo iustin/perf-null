@@ -1,4 +1,4 @@
-#!/usr/bin/python3.2
+# this is not a shebang
 
 import sys
 

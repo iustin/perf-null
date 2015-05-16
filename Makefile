@@ -16,11 +16,7 @@ SCRIPTS = \
 	awk/null.mawk awk/null.gawk \
 	ruby/null.rb18 ruby/null.rb19 \
 	php/null.php php/null.php-n \
-	tcl/null.tcl84 tcl/null.tcl85 tcl/null.tcl86 \
-	python/null.py26 python/null.py26-s \
-	python/null.py27 python/null.py27-s python/null.py27-o \
-	python/null.py32 python/null.py32-s python/null.py32-o \
-	python/null.pypy python/null.pypy-s
+	tcl/null.tcl84 tcl/null.tcl85 tcl/null.tcl86
 
 #METRICS = \
 #	cycles,instructions,branches,branch-misses \
@@ -33,6 +29,11 @@ METRICS = cycles,instructions,branches,branch-misses,cpu-clock,task-clock,major-
 JAVA_VMS = server zero cacao jamvm
 # see below for how this is called
 JAVA_INVOCS = $(JAVA_VMS:%="java -cp java -% Null")
+
+PYTHON_VERSIONS ?= python2.7 python3.4 pypy
+PYTHON_VARIANTS = "" -O -S
+PYTHON_INVOCS = $(foreach py,$(PYTHON_VERSIONS), \
+	$(foreach opt,$(PYTHON_VARIANTS), "$(py) $(opt) python/null.py"))
 
 EXTRA_RUN = /bin/true
 
@@ -94,7 +95,8 @@ java/Null.class: java/Null.java Makefile
 
 log: $(PROGS) $(SCRIPTS) java/Null.class Makefile
 	rm -f log; \
-	for prog in $(PROGS:%=./%) $(SCRIPTS:%=./%) $(EXTRA_RUN) $(JAVA_INVOCS); do \
+	for prog in $(PROGS:%=./%) $(SCRIPTS:%=./%) \
+	  $(EXTRA_RUN) $(JAVA_INVOCS) $(PYTHON_INVOCS); do \
 	  echo $$prog; \
 	  for metric in $(METRICS); do \
 	    LC_ALL=C $(PERF) stat -e "$$metric" -r $(REPS) -o log --append $$prog; \

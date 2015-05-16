@@ -1,5 +1,0 @@
-#!/usr/bin/python2.7 -O
-
-import sys
-
-sys.exit(0)

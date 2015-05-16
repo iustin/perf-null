@@ -1,5 +1,0 @@
-#!/usr/bin/pypy
-
-import sys
-
-sys.exit(0)
