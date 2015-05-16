@@ -1,3 +1,5 @@
+# Perf-null
+
 This is a set of small programs for testing startup costs using perf.
 
 Yes, this is mostly pointless, but it was fun to do it and to look at
@@ -14,4 +16,5 @@ Main target is "make log", and it is recommended to run it via
 ./run.sh, which is a simple wrapper that should make runs more
 consistent.
 
-Note: all the extremelly trivial code here is GPL v2 or later. See COPYING.
+Note: all the extremelly trivial code here is under the Apache
+License, Version 2.0. See LICENSE.
