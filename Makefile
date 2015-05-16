@@ -13,7 +13,6 @@ SCRIPTS = \
 	mksh/null.mksh mksh/null.mksh-static \
 	perl/null.pl \
 	awk/null.mawk awk/null.gawk \
-	ruby/null.rb18 ruby/null.rb19 \
 	php/null.php php/null.php-n \
 	tcl/null.tcl84 tcl/null.tcl85 tcl/null.tcl86
 
@@ -36,6 +35,9 @@ PYTHON_TARGETS = $(foreach py,$(PYTHON_VERSIONS), \
 
 LUA_VERSIONS ?= lua5.1 lua5.2 luajit
 LUA_TARGETS = $(LUA_VERSIONS:%="% lua/null.lua")
+
+RUBY_VERSIONS ?= ruby2.1 ruby2.2
+RUBY_TARGETS = $(RUBY_VERSIONS:%="% ruby/null.rb")
 
 EXTRA_RUN = /bin/true
 
